@@ -22,6 +22,9 @@ import com.zandor300.zsutilities.utilities.particles.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mcstats.Metrics;
+
+import java.io.IOException;
 
 /**
  * @author Zandor Smith
@@ -45,6 +48,14 @@ public class FlyingParticles extends JavaPlugin {
 		chat.sendConsoleMessage("Setting things up...");
 
 		plugin = this;
+
+		chat.sendConsoleMessage("Sending metrics...");
+		try {
+			new Metrics(this).start();
+			chat.sendConsoleMessage("Submitted stats to MCStats.org.");
+		} catch (IOException e) {
+			chat.sendConsoleMessage("Couldn't submit stats to MCStats.org...");
+		}
 
 		chat.sendConsoleMessage("Starting timers...");
 		Bukkit.getScheduler().runTaskTimer(this, new Runnable() {
