@@ -16,10 +16,11 @@
 package com.zandor300.flyingparticles;
 
 import com.zandor300.flyingparticles.commands.FlyingParticlesCommand;
+import com.zandor300.flyingparticles.utilities.ParticleEffect;
 import com.zandor300.zsutilities.commandsystem.CommandManager;
 import com.zandor300.zsutilities.utilities.Chat;
-import com.zandor300.zsutilities.utilities.particles.ParticleEffect;
 import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
@@ -64,7 +65,7 @@ public class FlyingParticles extends JavaPlugin {
 				for(Player player : Bukkit.getOnlinePlayers())
 					if(player.hasPermission("flyingparticles.particles"))
 						if(player.isFlying())
-							ParticleEffect.CLOUD.display(1, 0.5f, 1, 0, 20, player.getLocation(), 16);
+							ParticleEffect.sendToLocation(ParticleEffect.CLOUD, player.getLocation(), 1, 0.5f, 1, 0, 20);
 			}
 		}, 20l, 2l);
 		chat.sendConsoleMessage("Timers started.");
