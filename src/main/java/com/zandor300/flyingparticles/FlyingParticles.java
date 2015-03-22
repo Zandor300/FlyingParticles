@@ -64,9 +64,9 @@ public class FlyingParticles extends JavaPlugin {
 				for(Player player : Bukkit.getOnlinePlayers())
 					if(player.hasPermission("flyingparticles.particles"))
 						if(player.isFlying())
-							ParticleEffect.CLOUD.display(1, 0.5f, 1, 0, 5, player.getLocation(), 16);
+							ParticleEffect.CLOUD.display(1, 0.5f, 1, 0, 20, player.getLocation(), 16);
 			}
-		}, 20l, 4l);
+		}, 20l, 2l);
 		chat.sendConsoleMessage("Timers started.");
 
 		CommandManager cm = new CommandManager();
