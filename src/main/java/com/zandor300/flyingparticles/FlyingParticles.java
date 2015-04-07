@@ -20,12 +20,15 @@ import com.zandor300.flyingparticles.utilities.ParticleEffect;
 import com.zandor300.zsutilities.commandsystem.CommandManager;
 import com.zandor300.zsutilities.utilities.Chat;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Zandor Smith
@@ -64,8 +67,15 @@ public class FlyingParticles extends JavaPlugin {
 			public void run() {
 				for(Player player : Bukkit.getOnlinePlayers())
 					if(player.hasPermission("flyingparticles.particles"))
-						if(player.isFlying())
-							ParticleEffect.sendToLocation(ParticleEffect.CLOUD, player.getLocation(), 1, 0.5f, 1, 0, 20);
+						if(player.isFlying()) {
+							if(player.getLocation().getBlock().getType().equals(Material.WATER) || player.getLocation().getBlock().getType().equals(Material.STATIONARY_WATER)) {
+								ParticleEffect.sendToLocation(ParticleEffect.AIR_BUBBLE, player.getLocation(), 1, 0.5f, 1, 0, 20);
+								//com.zandor300.zsutilities.utilities.particles.ParticleEffect.WATER_BUBBLE.display(1, 0.5f, 1, 0, 20, player.getLocation(), 16);
+							} else {
+								ParticleEffect.sendToLocation(ParticleEffect.CLOUD, player.getLocation(), 1, 0.5f, 1, 0, 20);
+								//com.zandor300.zsutilities.utilities.particles.ParticleEffect.CLOUD.display(1, 0.5f, 1, 0, 50, player.getLocation(), 16);
+							}
+						}
 			}
 		}, 20l, 2l);
 		chat.sendConsoleMessage("Timers started.");
