@@ -17,19 +17,16 @@ package com.zandor300.flyingparticles;
 
 import com.zandor300.flyingparticles.commands.FlyingParticlesCommand;
 import com.zandor300.flyingparticles.utilities.ParticleEffect;
+import com.zandor300.zsutilities.ZSUtilities;
 import com.zandor300.zsutilities.commandsystem.CommandManager;
 import com.zandor300.zsutilities.utilities.Chat;
-import com.zandor300.zsutilities.ZSUtilities;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * @author Zandor Smith
